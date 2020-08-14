@@ -12,5 +12,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
+        DB::table('partidos')->insert([
+            'GrupoEquipos' => 1,
+            'Equipo' => 1,
+        ]);
+        DB::table('partidos')->insert([
+            'GrupoEquipos' => 1,
+            'Equipo' => 2,
+        ]);
+        DB::table('partidos')->insert([
+            'GrupoEquipos' => 1,
+            'Equipo' => 3,
+        ]);
+        DB::table('partidos')->insert([
+            'GrupoEquipos' => 1,
+            'Equipo' => 4,
+        ]);
+
     }
 }

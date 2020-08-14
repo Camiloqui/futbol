@@ -11,4 +11,6 @@ class partidos extends Model
 
 
     protected $table='partidos';
+
+
 }

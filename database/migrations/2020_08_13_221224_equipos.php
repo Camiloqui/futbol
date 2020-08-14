@@ -20,6 +20,14 @@ class Equipos extends Migration
             $table->string('EquipoB');
             $table->string('EquipoC');
             $table->string('EquipoD');
+            $table->integer('PuntosA')->nullable();
+            $table->integer('PuntosB')->nullable();
+            $table->integer('PuntosC')->nullable();
+            $table->integer('PuntosD')->nullable();
+            $table->integer('GolesA')->nullable();
+            $table->integer('GolesB')->nullable();
+            $table->integer('GolesC')->nullable();
+            $table->integer('GolesD')->nullable();
 
         });
     }
