@@ -3,9 +3,11 @@
     Puntajes
 @endsection
 @section('content')
+
+
 <h1>Puntajes y posiciones</h1>
-<table>
-    <thead>
+<table class="table table-light table-hover">
+    <thead class="thead-light">
     <tr>
         <th>#</th>
         <th>Equipo</th>
@@ -36,4 +38,5 @@
     @endforeach
     </tbody>
 </table>
+<a href="{{route('equipos.index')}}">Regresar</a>
 @endsection

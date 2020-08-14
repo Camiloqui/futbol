@@ -4,9 +4,9 @@
 @endsection
 @section('content')
     <h1> Tabla de equipos</h1>
-<a href="{{url('/equipos/create')}}" class="btn btn-success">CREAR EQUIPOS</a>
-<table>
-    <thead>
+<a href="{{url('/equipos/create')}}" class="btn btn-success">CREAR EQUIPOS</a><br><br>
+<table class="table table-light table-hover">
+    <thead class="thead-light">
     <tr>
         <th>#</th>
         <th>Equipo A</th>
@@ -30,10 +30,10 @@
         <td>   {{$equipo->EquipoC}}      </td>
         <td>   {{$equipo->EquipoD}}      </td>
         <td>
-         <a href="{{ url('/equipos/'.$equipo->id.'/edit') }}"> jugar partido</a>
+         <a href="{{ url('/equipos/'.$equipo->id.'/edit') }}" class="btn btn-warning"> jugar partido</a>
         </td>
         <td>
-            <a href="{{ url('equipos/'.$equipo->id) }}">Ver Tabla de clasificacion</a>
+            <a href="{{ url('equipos/'.$equipo->id) }}" class="btn btn-danger">Ver Tabla de clasificacion</a>
         </td>
     </tr>
 

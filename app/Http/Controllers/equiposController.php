@@ -98,6 +98,14 @@ class equiposController extends Controller
     public function store(Request $request)
     {
         //
+        $datos=[
+            'EquipoA'=>'required|string|max:100',
+            'EquipoB'=>'required|string|max:100',
+            'EquipoC'=>'required|string|max:100',
+            'EquipoD'=>'required|string|max:100',
+        ];
+        $mensaje=["required"=>'El :attribute es requerido'];
+        $this->validate($request,$datos,$mensaje);
         $equipo = $request->except('_token');
         Equipos::insert($equipo);
         $equipos = Equipos::get()->all();
@@ -158,16 +166,22 @@ class equiposController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $toarrayDatos = [
-            'PuntosA' => 0,
-            'PuntosB' => 0,
-            'PuntosC' => 0,
-            'PuntosD' => 0,
-            'GolesA' => 0,
-            'GolesB' => 0,
-            'GolesC' => 0,
-            'GolesD' => 0,
-        ];
+//        $toarrayDatos = [
+//            'PartidosAB' => 'required|integer',
+//            'PartidosAC' => 'required|integer',
+//            'PartidosAD' => 'required|integer',
+//            'PartidosBA' => 'required|integer',
+//            'PartidosBC'=> 'required|integer',
+//            'PartidosBD' => 'required|integer',
+//            'PartidosCA'=> 'required|integer',
+//            'PartidosCB' => 'required|integer',
+//            'PartidosCD' => 'required|integer',
+//            'PartidosDA' => 'required|integer',
+//            'PartidosDB' => 'required|integer',
+//            'PartidosDC' => 'required|integer'
+//        ];
+//        $mensaje=["required"=>'El campo es requerido y debe ser un numero entero'];
+//        $this->validate($request,$toarrayDatos,$mensaje);
         $datosequipos = $request->except(['_token', '_method']);
 //        dd($request['PartidoAC']);
         if ($request['PartidoAB'] > $request['PartidoBA']) {
