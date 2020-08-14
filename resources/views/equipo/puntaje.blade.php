@@ -1,0 +1,96 @@
+<h1>Puntajes y posiciones</h1>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Equipo</th>
+        <th>Puntos totales</th>
+        <th>Goles tolates</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    @if($equipos->PuntosA>$equipos->PuntosB)
+        <tr>
+        @if($equipos-PuntosA>$equipos->PuntosC)
+            @if($equipos->PuntosA>$equipos->PuntosD)
+
+            @elseif($equipos->PuntosA<$equipos->PuntosD)
+                <tr>
+                    <td>1</td>
+                    <td>{{$equipos->EquipoD}}</td>
+                    <td>{{$equipos->PuntosD}}</td>
+                    <td>{{$equipos->GolesD}}</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>{{$equipos->EquipoA}}</td>
+                    <td>{{$equipos->PuntosA}}</td>
+                    <td>{{$equipos->GolesA}}</td>
+                </tr>
+                @if($equipos->PuntosC>$equipos->PuntosB)
+
+                    <tr>
+                        <td>3</td>
+                        <td>{{$equipos->EquipoC}}</td>
+                        <td>{{$equipos->PuntosC}}</td>
+                        <td>{{$equipos->GolesC}}</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>{{$equipos->EquipoB}}</td>
+                        <td>{{$equipos->PuntosB}}</td>
+                        <td>{{$equipos->GolesB}}</td>
+                    </tr>
+                @elseif($equipos->PuntosC>$equipos->PuntosB)
+
+                    <tr>
+                        <td>3</td>
+                        <td>{{$equipos->EquipoB}}</td>
+                        <td>{{$equipos->PuntosB}}</td>
+                        <td>{{$equipos->GolesB}}</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>{{$equipos->EquipoC}}</td>
+                        <td>{{$equipos->PuntosC}}</td>
+                        <td>{{$equipos->GolesC}}</td>
+                    </tr>
+                @else
+                    @if($equipos->GolesC>$equipos->GolesB)
+                        <tr>
+                            <td>3</td>
+                            <td>{{$equipos->EquipoC}}</td>
+                            <td>{{$equipos->PuntosC}}</td>
+                            <td>{{$equipos->GolesC}}</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>{{$equipos->EquipoB}}</td>
+                            <td>{{$equipos->PuntosB}}</td>
+                            <td>{{$equipos->GolesB}}</td>
+                        </tr>
+                    @else
+                        <tr>
+                            <td>3</td>
+                            <td>{{$equipos->EquipoB}}</td>
+                            <td>{{$equipos->PuntosB}}</td>
+                            <td>{{$equipos->GolesB}}</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>{{$equipos->EquipoC}}</td>
+                            <td>{{$equipos->PuntosC}}</td>
+                            <td>{{$equipos->GolesC}}</td>
+                        </tr>
+                        @endif
+                        @endif
+                        @else
+                            @if($equipos->GolesA>$equipos)
+                     @endif
+                        @endif
+                        </tr>
+                    @endif
+    </tbody>
+</table>

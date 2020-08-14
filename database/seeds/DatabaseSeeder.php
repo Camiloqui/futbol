@@ -28,6 +28,21 @@ class DatabaseSeeder extends Seeder
             'GrupoEquipos' => 1,
             'Equipo' => 4,
         ]);
-
+        DB::table('Puntos')->insert([
+            'GrupoEquipos' => 1,
+            'Equipos' => 1,
+        ]);
+        DB::table('Puntos')->insert([
+            'GrupoEquipos' => 1,
+            'Equipos' => 2,
+        ]);
+        DB::table('Puntos')->insert([
+            'GrupoEquipos' => 1,
+            'Equipos' => 3,
+        ]);
+        DB::table('Puntos')->insert([
+            'GrupoEquipos' => 1,
+            'Equipos' => 4,
+        ]);
     }
 }

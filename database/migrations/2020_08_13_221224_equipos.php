@@ -28,6 +28,7 @@ class Equipos extends Migration
             $table->integer('GolesB')->nullable();
             $table->integer('GolesC')->nullable();
             $table->integer('GolesD')->nullable();
+            $table->timestamp('updated_at');
 
         });
     }

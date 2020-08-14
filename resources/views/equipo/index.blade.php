@@ -9,6 +9,7 @@
         <th>Equipo C</th>
         <th>Equipo D</th>
         <th>Partido</th>
+        <th>Puntajes</th>
 
 
     </tr>
@@ -25,6 +26,9 @@
         <td>   {{$equipo->EquipoD}}      </td>
         <td>
          <a href="{{ url('/equipos/'.$equipo->id.'/edit') }}"> jugar partido</a>
+        </td>
+        <td>
+            <a href="{{ url('equipos/'.$equipo->id) }}">Ver Tabla de clasificacion</a>
         </td>
     </tr>
 
