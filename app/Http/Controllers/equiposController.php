@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Equipos;
+use App\Partidos;
 
-class equipos extends Controller
+class equiposController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,9 @@ class equipos extends Controller
     public function index()
     {
         //
-        return view('equipo.index');
+        $equipos = Equipos::get()->all();
+
+        return view('equipo.index', compact('equipos'));
     }
 
     /**
@@ -31,18 +35,24 @@ class equipos extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //
+        $equipo = $request->except('_token');
+        Equipos::insert($equipo);
+        $equipos = Equipos::get()->all();
+
+        return view('equipo.index', compact('equipo'));
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -53,34 +63,53 @@ class equipos extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
+        $equipos = Equipos::FindOrfail($id);
+        $partidos = Partidos::all();
+        $contador=0;
+        foreach ($partidos as $partido) {
+
+            $contador=$contador+1;
+            if ($equipos->id != $partido->GrupoEquipos){
+                Partidos::insert(['GrupoEquipos' => $equipos->id, 'Equipo' => $contador]);
+
+        }else{
+                return view('equipo.partidos',compact('equipos','partido'));
+            }
+
+        }
+
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
+        dd($request['PartidoAC']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
     }
+
+
 }

@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'equipos@index');
-Route::resource('equipos','equipos');
+Route::get('/', 'equiposController@index');
+Route::resource('equipos','equiposController');
