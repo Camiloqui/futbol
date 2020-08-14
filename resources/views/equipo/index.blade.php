@@ -1,5 +1,10 @@
-<h1> Tabla de equipos</h1>
-
+@extends('layout')
+@section('title')
+    Tabla de equipos
+@endsection
+@section('content')
+    <h1> Tabla de equipos</h1>
+<a href="{{url('/equipos/create')}}" class="btn btn-success">CREAR EQUIPOS</a>
 <table>
     <thead>
     <tr>
@@ -37,4 +42,4 @@
 
     </tbody>
 </table>
-
+@endsection

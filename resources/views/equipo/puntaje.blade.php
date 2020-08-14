@@ -1,3 +1,8 @@
+@extends('layout')
+@section('title')
+    Puntajes
+@endsection
+@section('content')
 <h1>Puntajes y posiciones</h1>
 <table>
     <thead>
@@ -11,86 +16,24 @@
     </tr>
     </thead>
     <tbody>
-    @if($equipos->PuntosA>$equipos->PuntosB)
+    @foreach($puntos as $punto)
         <tr>
-        @if($equipos-PuntosA>$equipos->PuntosC)
-            @if($equipos->PuntosA>$equipos->PuntosD)
+            <td> {{$loop->iteration}}</td>
 
-            @elseif($equipos->PuntosA<$equipos->PuntosD)
-                <tr>
-                    <td>1</td>
-                    <td>{{$equipos->EquipoD}}</td>
-                    <td>{{$equipos->PuntosD}}</td>
-                    <td>{{$equipos->GolesD}}</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>{{$equipos->EquipoA}}</td>
-                    <td>{{$equipos->PuntosA}}</td>
-                    <td>{{$equipos->GolesA}}</td>
-                </tr>
-                @if($equipos->PuntosC>$equipos->PuntosB)
+            @if($punto->Equipos==1)
+                <td>{{$equipos->EquipoA}}</td>
+            @elseif($punto->Equipos==2)
+                <td>{{$equipos->EquipoB}}</td>
+            @elseif($punto->Equipos==3)
+                <td>{{$equipos->EquipoC}}</td>
+            @elseif($punto->Equipos==4)
+                <td>{{$equipos->EquipoD}}</td>
+            @endif
 
-                    <tr>
-                        <td>3</td>
-                        <td>{{$equipos->EquipoC}}</td>
-                        <td>{{$equipos->PuntosC}}</td>
-                        <td>{{$equipos->GolesC}}</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>{{$equipos->EquipoB}}</td>
-                        <td>{{$equipos->PuntosB}}</td>
-                        <td>{{$equipos->GolesB}}</td>
-                    </tr>
-                @elseif($equipos->PuntosC>$equipos->PuntosB)
-
-                    <tr>
-                        <td>3</td>
-                        <td>{{$equipos->EquipoB}}</td>
-                        <td>{{$equipos->PuntosB}}</td>
-                        <td>{{$equipos->GolesB}}</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>{{$equipos->EquipoC}}</td>
-                        <td>{{$equipos->PuntosC}}</td>
-                        <td>{{$equipos->GolesC}}</td>
-                    </tr>
-                @else
-                    @if($equipos->GolesC>$equipos->GolesB)
-                        <tr>
-                            <td>3</td>
-                            <td>{{$equipos->EquipoC}}</td>
-                            <td>{{$equipos->PuntosC}}</td>
-                            <td>{{$equipos->GolesC}}</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>{{$equipos->EquipoB}}</td>
-                            <td>{{$equipos->PuntosB}}</td>
-                            <td>{{$equipos->GolesB}}</td>
-                        </tr>
-                    @else
-                        <tr>
-                            <td>3</td>
-                            <td>{{$equipos->EquipoB}}</td>
-                            <td>{{$equipos->PuntosB}}</td>
-                            <td>{{$equipos->GolesB}}</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>{{$equipos->EquipoC}}</td>
-                            <td>{{$equipos->PuntosC}}</td>
-                            <td>{{$equipos->GolesC}}</td>
-                        </tr>
-                        @endif
-                        @endif
-                        @else
-                            @if($equipos->GolesA>$equipos)
-                     @endif
-                        @endif
-                        </tr>
-                    @endif
+            <td>{{$punto->Puntos}}</td>
+            <td>{{$punto->Goles}}</td>
+        </tr>
+    @endforeach
     </tbody>
 </table>
+@endsection

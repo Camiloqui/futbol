@@ -20,7 +20,9 @@ class Puntos extends Migration
             $table->integer('Equipos')->nullable();
             $table->integer('Puntos')->nullable();
             $table->integer('Goles')->nullable();
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+
         });
     }
 

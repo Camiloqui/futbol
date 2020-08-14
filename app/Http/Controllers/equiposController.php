@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Equipos;
 use App\Partidos;
-use APP\Puntos;
+use App\Puntos;
+
 /**
  * Class equiposController
  * @package App\Http\Controllers
@@ -115,7 +116,9 @@ class equiposController extends Controller
     {
         //
         $equipos = Equipos::FindOrfail($id);
-        return view('equipo.puntaje',compact('equipos'));
+        $puntos = Puntos::where('GrupoEquipos', '=', $id)->orderBy('Puntos', 'DESC')->orderBy('Goles', 'Desc')->get();
+
+        return view('equipo.puntaje', compact('equipos', 'puntos'));
     }
 
     /**
@@ -128,19 +131,19 @@ class equiposController extends Controller
     {
         //
         $equipos = Equipos::FindOrfail($id);
-        $partidos = Puntos::all();
-        $contador = 0;
-        foreach ($partidos as $partido) {
+        $partidos = Puntos::where('GrupoEquipos', '=', $equipos->id)->first();
+        $contador = 1;
 
-            $contador = $contador + 1;
-            if ($equipos->id != $partido->GrupoEquipos) {
-                Puntos::insert(['GrupoEquipos' => $equipos->id, 'Equipo' => $contador]);
+        if ($partidos == null) {
+            for ($contador; $contador <= 4; $contador++) {
+                Puntos::create(['GrupoEquipos' => $equipos->id, 'Equipos' => $contador]);
 
-            } else {
-                return view('equipo.partidos', compact('equipos', 'partido'));
+
             }
-
         }
+
+
+        return view('equipo.partidos', compact('equipos'));
 
 
     }
@@ -238,14 +241,14 @@ class equiposController extends Controller
             'GolesC' => $this->GolesC,
             'GolesD' => $this->GolesD,
         ];
-        Equipos::where('id','=',$id)->update($toarrayDatos);
-        Puntos::where(['GrupoEquipos','=',$id],['Equipos','=',1])->update(['Puntos'=>$this->PuntosA,'Goles'=>$this->GolesA]);
-        Puntos::where(['GrupoEquipos','=',$id],['Equipos','=',2])->update(['Puntos'=>$this->PuntosB,'Goles'=>$this->GolesB]);
-        Puntos::where(['GrupoEquipos','=',$id],['Equipos','=',3])->update(['Puntos'=>$this->PuntosC,'Goles'=>$this->GolesC]);
-        Puntos::where(['GrupoEquipos','=',$id],['Equipos','=',4])->update(['Puntos'=>$this->PuntosD,'Goles'=>$this->GolesD]);
+        Equipos::where('id', '=', $id)->update($toarrayDatos);
+        Puntos::where('GrupoEquipos', '=', $id)->where('Equipos', '=', '1')->update(['Puntos' => $this->PuntosA, 'Goles' => $this->GolesA]);
+        Puntos::where('GrupoEquipos', '=', $id)->where('Equipos', '=', '2')->update(['Puntos' => $this->PuntosB, 'Goles' => $this->GolesB]);
+        Puntos::where('GrupoEquipos', '=', $id)->where('Equipos', '=', '3')->update(['Puntos' => $this->PuntosC, 'Goles' => $this->GolesC]);
+        Puntos::where('GrupoEquipos', '=', $id)->where('Equipos', '=', '4')->update(['Puntos' => $this->PuntosD, 'Goles' => $this->GolesD]);
 
         return redirect()->route('equipos.index');
-            }
+    }
 
 
     /**

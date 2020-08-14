@@ -1,3 +1,9 @@
+@extends('layout')
+@section('title')
+    Partidos
+@endsection
+@section('content')
+
 <h1>Registre quien gana cada partido</h1>
 <form action="{{url('/equipos/'.$equipos->id)}}" method="POST">
 
@@ -34,3 +40,4 @@
 
 
 </form>
+@endsection

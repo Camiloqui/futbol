@@ -1,3 +1,8 @@
+@extends('layout')
+@section('title')
+    Crear equipos
+@endsection
+@section('content')
 <form action="{{url('/equipos ')}}" method="POST">
     @csrf
     <h1> Registre sus 4 equipos</h1>
@@ -14,3 +19,4 @@
 
 
 </form>
+@endsection
